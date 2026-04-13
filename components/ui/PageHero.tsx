@@ -9,14 +9,13 @@ type PageHeroProps = {
 
 export function PageHero({ eyebrow, title, subtitle, children }: PageHeroProps) {
   return (
-    <div className="bg-[#111111] pt-28 pb-16 sm:pt-32 sm:pb-20">
-      <div className="max-w-7xl mx-auto px-6 lg:px-8">
+    <div className="bg-[#111111] border-b-2 border-[#E53E3E] pt-16 pb-16 sm:pt-20 sm:pb-20">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="max-w-3xl">
-          <div className="flex items-center gap-2.5 mb-5">
-            <span className="w-1.5 h-1.5 rounded-full bg-[#E53E3E]" />
-            <p className="text-white/50 text-xs font-semibold tracking-[0.25em] uppercase">
+          <div className="mb-5">
+            <span className="inline-block border-2 border-[#E53E3E] bg-[#E53E3E] px-4 py-1 text-xs font-bold uppercase tracking-widest text-white shadow-[3px_3px_0px_#ffffff30]" style={{ fontFamily: 'var(--font-heading)' }}>
               {eyebrow}
-            </p>
+            </span>
           </div>
           <h1
             className="text-5xl sm:text-6xl lg:text-7xl font-bold uppercase leading-[0.93] text-white"

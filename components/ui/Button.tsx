@@ -15,11 +15,11 @@ type ButtonProps = {
 
 const variantClasses: Record<ButtonVariant, string> = {
   primary:
-    'bg-[#E53E3E] hover:bg-[#C53030] text-white font-semibold uppercase tracking-wider transition-all duration-200 hover:scale-[1.02]',
+    'border-2 border-[#111111] bg-[#E53E3E] text-white font-bold uppercase tracking-wider shadow-[3px_3px_0px_#111111] transition-all duration-150 hover:-translate-x-0.5 hover:-translate-y-0.5 hover:shadow-[4px_4px_0px_#111111]',
   secondary:
-    'border border-white/30 hover:border-white text-white font-semibold uppercase tracking-wider transition-all duration-200 hover:bg-white/5',
+    'border-2 border-[#111111] bg-white text-[#111111] font-bold uppercase tracking-wider shadow-[3px_3px_0px_#111111] transition-all duration-150 hover:-translate-x-0.5 hover:-translate-y-0.5 hover:shadow-[4px_4px_0px_#E53E3E]',
   ghost:
-    'text-[#A0A0A0] hover:text-white uppercase tracking-wider transition-colors duration-200 underline-offset-4 hover:underline',
+    'border-2 border-transparent text-[#E53E3E] font-bold uppercase tracking-wider hover:border-[#E53E3E] transition-colors duration-150',
 }
 
 export function Button({
@@ -37,20 +37,20 @@ export function Button({
   if (href) {
     if (external) {
       return (
-        <a href={href} target="_blank" rel="noopener noreferrer" className={base}>
+        <a href={href} target="_blank" rel="noopener noreferrer" className={base} style={{ fontFamily: 'var(--font-heading)' }}>
           {children}
         </a>
       )
     }
     return (
-      <Link href={href} className={base}>
+      <Link href={href} className={base} style={{ fontFamily: 'var(--font-heading)' }}>
         {children}
       </Link>
     )
   }
 
   return (
-    <button type={type} onClick={onClick} disabled={disabled} className={base}>
+    <button type={type} onClick={onClick} disabled={disabled} className={base} style={{ fontFamily: 'var(--font-heading)' }}>
       {children}
     </button>
   )

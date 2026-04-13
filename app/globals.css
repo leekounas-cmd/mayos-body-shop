@@ -1,20 +1,17 @@
+@import url('https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=DM+Sans:wght@400;500;600&display=swap');
 @import "tailwindcss";
 
 @theme inline {
-  --color-background: #FFFFFF;
-  --color-surface: #F5F5F5;
-  --color-surface-2: #FAFAFA;
-  --color-border: #E5E5E5;
+  --color-background: #FAFAFA;
+  --color-surface: #FFFFFF;
+  --color-ink: #111111;
+  --color-ink-muted: #555555;
+  --color-border: #111111;
   --color-accent: #E53E3E;
-  --color-accent-hover: #C53030;
-  --color-accent-light: #FEF2F2;
+  --color-accent-soft: #FEF2F2;
   --color-gold: #D97706;
-  --color-text: #111111;
-  --color-text-muted: #555555;
-  --color-white: #FFFFFF;
-
-  --font-heading: var(--font-oswald), sans-serif;
-  --font-body: var(--font-dm-sans), sans-serif;
+  --font-heading: var(--font-oswald), 'Oswald', sans-serif;
+  --font-body: var(--font-dm-sans), 'DM Sans', sans-serif;
 }
 
 * {
@@ -28,16 +25,46 @@ html {
 }
 
 body {
-  background: #FFFFFF;
+  background: #FAFAFA;
   color: #111111;
-  font-family: var(--font-dm-sans), sans-serif;
+  font-family: var(--font-body);
   font-size: 16px;
   line-height: 1.6;
   -webkit-font-smoothing: antialiased;
 }
 
+/* Neubrutalist utilities */
+.nb-border {
+  border: 2px solid #111111;
+}
+
+.nb-shadow {
+  box-shadow: 4px 4px 0px #111111;
+}
+
+.nb-shadow-red {
+  box-shadow: 4px 4px 0px #E53E3E;
+}
+
+.nb-shadow-sm {
+  box-shadow: 3px 3px 0px #111111;
+}
+
+.nb-hover {
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+.nb-hover:hover {
+  transform: translate(-2px, -2px);
+  box-shadow: 6px 6px 0px #E53E3E;
+}
+
+.nb-hover-dark:hover {
+  transform: translate(-2px, -2px);
+  box-shadow: 6px 6px 0px #111111;
+}
+
 ::-webkit-scrollbar { width: 5px; }
 ::-webkit-scrollbar-track { background: #F5F5F5; }
-::-webkit-scrollbar-thumb { background: #E53E3E; border-radius: 3px; }
-
+::-webkit-scrollbar-thumb { background: #E53E3E; }
 ::selection { background: #E53E3E; color: #fff; }

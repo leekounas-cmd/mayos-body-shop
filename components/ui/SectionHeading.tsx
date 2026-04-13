@@ -10,11 +10,13 @@ export function SectionHeading({ label, title, subtitle, center = false, light =
   return (
     <div className={center ? 'text-center' : ''}>
       {label && (
-        <div className={`flex items-center gap-3 mb-4 ${center ? 'justify-center' : ''}`}>
-          <span className="w-8 h-0.5 bg-[#E53E3E] flex-shrink-0" />
-          <p className={`text-xs font-bold tracking-[0.25em] uppercase ${light ? 'text-white/60' : 'text-[#E53E3E]'}`}>
+        <div className={`mb-4 ${center ? 'flex justify-center' : ''}`}>
+          <span
+            className="inline-block border-2 border-[#111111] bg-[#E53E3E] px-4 py-1 text-xs font-bold uppercase tracking-widest text-white shadow-[3px_3px_0px_#111111]"
+            style={{ fontFamily: 'var(--font-heading)' }}
+          >
             {label}
-          </p>
+          </span>
         </div>
       )}
       <h2
