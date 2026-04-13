@@ -5,7 +5,7 @@ import Image from 'next/image'
 
 export function Hero() {
   return (
-    <section className="relative overflow-hidden bg-[#111111] py-16 sm:py-24 lg:py-32">
+    <section className="relative overflow-hidden bg-[#111111] py-20 sm:py-28 lg:py-36">
       {/* Background image */}
       <div className="absolute inset-0">
         {/* TODO: Replace with actual shop/car photo from @mayos.bodyshop Instagram */}

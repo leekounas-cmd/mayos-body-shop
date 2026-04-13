@@ -5,7 +5,7 @@ export function ReviewsCarousel() {
   const displayed = reviews.slice(0, 6)
 
   return (
-    <section className="bg-white py-16 sm:py-24 border-b-2 border-[#111111]">
+    <section className="bg-white py-20 sm:py-28 border-b-2 border-[#111111]">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 
         {/* Header */}
@@ -36,7 +36,7 @@ export function ReviewsCarousel() {
         </div>
 
         {/* Grid — alternating white and red cards like El Toro */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
           {displayed.map((review, i) => {
             const isAccent = i === 1 || i === 4
             return (

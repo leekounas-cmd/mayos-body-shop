@@ -38,11 +38,11 @@ const serviceIcons: Record<string, React.ReactNode> = {
 
 export function ServicesGrid() {
   return (
-    <section className="bg-[#FAFAFA] py-16 sm:py-24 border-b-2 border-[#111111]">
+    <section className="bg-[#FAFAFA] py-20 sm:py-28 border-b-2 border-[#111111]">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 
         {/* Header */}
-        <div className="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-6 mb-12">
+        <div className="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-6 mb-14">
           <div>
             <span className="inline-block border-2 border-[#111111] bg-[#E53E3E] px-4 py-1 text-sm font-bold uppercase tracking-widest text-white shadow-[3px_3px_0px_#111111] mb-4" style={{ fontFamily: 'var(--font-heading)' }}>
               What We Do
@@ -70,12 +70,12 @@ export function ServicesGrid() {
         </div>
 
         {/* Grid */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
           {services.map((service) => (
             <Link
               key={service.slug}
               href={`/services/${service.slug}`}
-              className="group flex flex-col bg-white border-2 border-[#111111] p-7 shadow-[4px_4px_0px_#111111] transition-all duration-150 hover:-translate-x-0.5 hover:-translate-y-0.5 hover:shadow-[6px_6px_0px_#E53E3E]"
+              className="group flex flex-col bg-white border-2 border-[#111111] p-8 shadow-[4px_4px_0px_#111111] transition-all duration-150 hover:-translate-x-0.5 hover:-translate-y-0.5 hover:shadow-[6px_6px_0px_#E53E3E]"
             >
               <div className="w-11 h-11 border-2 border-[#111111] bg-white text-[#111111] group-hover:bg-[#E53E3E] group-hover:text-white group-hover:border-[#E53E3E] flex items-center justify-center mb-5 transition-all duration-150 flex-shrink-0">
                 {serviceIcons[service.slug]}

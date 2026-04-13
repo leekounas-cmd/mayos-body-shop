@@ -43,7 +43,7 @@ const stats = [
 
 export function TrustStrip() {
   return (
-    <section className="border-b-2 border-[#111111] bg-[#E53E3E] py-5">
+    <section className="border-b-2 border-[#111111] bg-[#E53E3E] py-6 sm:py-8">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-2 gap-4 lg:grid-cols-4 lg:gap-8">
           {stats.map((stat) => (

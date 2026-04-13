@@ -9,7 +9,7 @@ type PageHeroProps = {
 
 export function PageHero({ eyebrow, title, subtitle, children }: PageHeroProps) {
   return (
-    <div className="bg-[#111111] border-b-2 border-[#E53E3E] pt-16 pb-16 sm:pt-20 sm:pb-20">
+    <div className="bg-[#111111] border-b-2 border-[#E53E3E] pt-20 pb-20 sm:pt-28 sm:pb-28">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="max-w-3xl">
           <div className="mb-5">

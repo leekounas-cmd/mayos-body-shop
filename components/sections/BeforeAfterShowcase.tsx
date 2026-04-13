@@ -6,7 +6,7 @@ export function BeforeAfterShowcase() {
   ]
 
   return (
-    <section className="bg-[#111111] py-16 sm:py-24 border-b-2 border-[#E53E3E]">
+    <section className="bg-[#111111] py-20 sm:py-28 border-b-2 border-[#E53E3E]">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 
         {/* Header */}
@@ -26,7 +26,7 @@ export function BeforeAfterShowcase() {
         </div>
 
         {/* Before / After pairs */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           {pairs.map((pair) => (
             <div key={pair.label} className="border-2 border-[#333333] shadow-[4px_4px_0px_#E53E3E]">
               {/* Label */}

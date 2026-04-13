@@ -18,7 +18,7 @@ const stats = [
 
 export function WhyMayos() {
   return (
-    <section className="bg-[#FAFAFA] py-16 sm:py-24 border-b-2 border-[#111111]">
+    <section className="bg-[#FAFAFA] py-20 sm:py-28 border-b-2 border-[#111111]">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 
         {/* Header */}
@@ -35,7 +35,7 @@ export function WhyMayos() {
         </div>
 
         {/* Stats grid */}
-        <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
+        <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 lg:gap-8">
           {stats.map((stat, i) => (
             <div
               key={stat.title}
