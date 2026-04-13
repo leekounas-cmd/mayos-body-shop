@@ -3,7 +3,6 @@
 import Link from 'next/link'
 import { motion } from 'framer-motion'
 import { services } from '@/data/services'
-import { SectionHeading } from '@/components/ui/SectionHeading'
 
 const serviceIcons: Record<string, React.ReactNode> = {
   'collision-repair': (
@@ -40,15 +39,23 @@ const serviceIcons: Record<string, React.ReactNode> = {
 
 export function ServicesGrid() {
   return (
-    <section className="py-16 lg:py-24 bg-[#F8F8F8]">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section className="py-20 lg:py-28 bg-[#F7F7F7]">
+      <div className="max-w-7xl mx-auto px-6 lg:px-8">
 
-        <div className="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-6 mb-12">
-          <SectionHeading
-            label="What We Do"
-            title="Our Services"
-            subtitle="From a door ding to a totaled frame — we handle it all."
-          />
+        {/* Header */}
+        <div className="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-6 mb-14">
+          <div>
+            <p className="text-[#E53E3E] text-xs font-bold tracking-[0.25em] uppercase mb-3">What We Do</p>
+            <h2
+              className="text-[#111111] text-4xl sm:text-5xl font-bold uppercase leading-tight"
+              style={{ fontFamily: 'var(--font-heading)' }}
+            >
+              Our Services
+            </h2>
+            <p className="text-[#666666] mt-3 text-base max-w-md">
+              From a door ding to a totaled frame — we handle it all and deal directly with your insurance.
+            </p>
+          </div>
           <Link
             href="/services"
             className="inline-flex items-center gap-2 text-[#E53E3E] text-sm font-bold uppercase tracking-wider hover:text-[#C53030] transition-colors cursor-pointer flex-shrink-0"
@@ -60,29 +67,30 @@ export function ServicesGrid() {
           </Link>
         </div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
+        {/* Grid */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
           {services.map((service, i) => (
             <motion.div
               key={service.slug}
-              initial={{ opacity: 0, y: 20 }}
+              initial={{ opacity: 0, y: 16 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ duration: 0.3, delay: i * 0.06 }}
+              transition={{ duration: 0.3, delay: i * 0.05 }}
             >
               <Link
                 href={`/services/${service.slug}`}
-                className="group block bg-white rounded-xl shadow-sm hover:shadow-xl transition-all duration-300 p-8 h-full cursor-pointer"
+                className="group flex flex-col bg-white rounded-2xl border border-[#EEEEEE] hover:border-[#E53E3E]/30 hover:shadow-xl transition-all duration-250 p-7 h-full cursor-pointer"
               >
-                <div className="w-12 h-12 bg-[#FEF2F2] rounded-lg flex items-center justify-center mb-5 text-[#E53E3E] group-hover:bg-[#E53E3E] group-hover:text-white transition-all duration-300 flex-shrink-0">
+                <div className="w-11 h-11 rounded-xl bg-[#FEF2F2] text-[#E53E3E] group-hover:bg-[#E53E3E] group-hover:text-white flex items-center justify-center mb-5 transition-all duration-250 flex-shrink-0">
                   {serviceIcons[service.slug]}
                 </div>
                 <h3
-                  className="text-[#111111] text-xl font-bold uppercase tracking-wide mb-3 group-hover:text-[#E53E3E] transition-colors duration-200"
+                  className="text-[#111111] text-lg font-bold uppercase tracking-wide mb-2.5 group-hover:text-[#E53E3E] transition-colors duration-200"
                   style={{ fontFamily: 'var(--font-heading)' }}
                 >
                   {service.shortTitle}
                 </h3>
-                <p className="text-[#666666] text-sm leading-relaxed mb-6">
+                <p className="text-[#777777] text-sm leading-relaxed flex-1 mb-5">
                   {service.description}
                 </p>
                 <span className="inline-flex items-center gap-1.5 text-[#E53E3E] text-xs font-bold uppercase tracking-wider group-hover:gap-3 transition-all duration-200">

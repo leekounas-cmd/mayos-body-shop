@@ -71,18 +71,18 @@ export default function GalleryPage() {
         subtitle="Real repairs, real results. Drag any slider to see the transformation."
       />
 
-      {/* Filter */}
-      <div className="bg-white border-b border-[#F0F0F0] sticky top-[65px] z-30">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
+      {/* Filter bar */}
+      <div className="bg-white border-b border-[#EEEEEE] sticky top-[70px] z-30">
+        <div className="max-w-7xl mx-auto px-6 lg:px-8 py-4">
           <div className="flex flex-wrap gap-2">
             {filters.map((filter) => (
               <button
                 key={filter}
                 onClick={() => setActiveFilter(filter)}
-                className={`px-4 py-2 text-xs uppercase tracking-wider font-bold rounded-lg transition-all duration-200 cursor-pointer ${
+                className={`px-4 py-2 text-xs uppercase tracking-wider font-bold rounded-lg transition-all duration-150 cursor-pointer ${
                   activeFilter === filter
-                    ? 'bg-[#E53E3E] text-white shadow-sm'
-                    : 'bg-[#F8F8F8] text-[#555555] hover:bg-[#EEEEEE]'
+                    ? 'bg-[#E53E3E] text-white'
+                    : 'bg-[#F3F3F3] text-[#666666] hover:bg-[#EBEBEB]'
                 }`}
               >
                 {filter}
@@ -93,19 +93,20 @@ export default function GalleryPage() {
       </div>
 
       {/* Grid */}
-      <section className="py-12 lg:py-16 bg-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
+      <section className="py-14 lg:py-20 bg-[#F7F7F7]">
+        <div className="max-w-7xl mx-auto px-6 lg:px-8">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
             {filtered.map((item, i) => (
               <motion.div
                 key={item.id}
-                initial={{ opacity: 0, y: 16 }}
+                initial={{ opacity: 0, y: 12 }}
                 animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.25, delay: i * 0.04 }}
+                transition={{ duration: 0.2, delay: i * 0.04 }}
+                className="bg-white rounded-2xl border border-[#EEEEEE] overflow-hidden"
               >
                 {item.collage ? (
-                  <div>
-                    <div className="relative aspect-[4/3] overflow-hidden rounded-xl bg-[#F5F5F5]">
+                  <>
+                    <div className="relative aspect-[4/3]">
                       <Image
                         src={item.collage}
                         alt={item.collageAlt ?? ''}
@@ -114,28 +115,26 @@ export default function GalleryPage() {
                         sizes="(max-width: 768px) 100vw, 33vw"
                       />
                     </div>
-                    <div className="flex items-center justify-between mt-2.5 px-0.5">
-                      <span className="text-[#444444] text-xs uppercase tracking-wider font-bold">{item.service}</span>
-                      <span className="text-[#E53E3E] text-xs">Mayo&apos;s Body Shop</span>
+                    <div className="flex items-center justify-between px-5 py-3.5">
+                      <span className="text-[#555555] text-xs uppercase tracking-wider font-bold">{item.service}</span>
+                      <span className="text-[#E53E3E] text-xs font-medium">Mayo&apos;s Body Shop</span>
                     </div>
-                  </div>
+                  </>
                 ) : (
-                  <div>
-                    <div className="rounded-xl overflow-hidden">
-                      <BeforeAfterSlider
-                        beforeSrc={item.beforeSrc ?? ''}
-                        afterSrc={item.afterSrc ?? ''}
-                        beforeAlt={item.beforeAlt}
-                        afterAlt={item.afterAlt}
-                        aspectRatio="aspect-[4/3]"
-                        isPlaceholder={item.isPlaceholder ?? true}
-                      />
+                  <>
+                    <BeforeAfterSlider
+                      beforeSrc={item.beforeSrc ?? ''}
+                      afterSrc={item.afterSrc ?? ''}
+                      beforeAlt={item.beforeAlt}
+                      afterAlt={item.afterAlt}
+                      aspectRatio="aspect-[4/3]"
+                      isPlaceholder={item.isPlaceholder ?? true}
+                    />
+                    <div className="flex items-center justify-between px-5 py-3.5">
+                      <span className="text-[#555555] text-xs uppercase tracking-wider font-bold">{item.service}</span>
+                      <span className="text-[#E53E3E] text-xs font-medium">Mayo&apos;s Body Shop</span>
                     </div>
-                    <div className="flex items-center justify-between mt-2.5 px-0.5">
-                      <span className="text-[#444444] text-xs uppercase tracking-wider font-bold">{item.service}</span>
-                      <span className="text-[#E53E3E] text-xs">Mayo&apos;s Body Shop</span>
-                    </div>
-                  </div>
+                  </>
                 )}
               </motion.div>
             ))}
@@ -147,9 +146,10 @@ export default function GalleryPage() {
         </div>
       </section>
 
-      <div className="bg-[#F8F8F8] border-y border-[#F0F0F0] py-12">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <p className="text-[#666666] mb-4 text-sm">See more of our work on Instagram</p>
+      {/* Instagram */}
+      <div className="bg-white border-y border-[#EEEEEE] py-12">
+        <div className="max-w-7xl mx-auto px-6 lg:px-8 text-center">
+          <p className="text-[#777777] mb-4 text-sm">See more of our work on Instagram</p>
           <a
             href="https://www.instagram.com/mayos.bodyshop"
             target="_blank"

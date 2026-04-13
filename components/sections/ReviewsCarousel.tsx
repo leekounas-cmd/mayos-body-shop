@@ -1,15 +1,16 @@
 'use client'
 
-import { useRef } from 'react'
 import { motion } from 'framer-motion'
 import { reviews } from '@/data/reviews'
-import { SectionHeading } from '@/components/ui/SectionHeading'
+import Link from 'next/link'
 
-function Stars({ rating }: { rating: number }) {
+const featured = reviews.slice(0, 6)
+
+function Stars() {
   return (
     <div className="flex gap-0.5">
       {Array.from({ length: 5 }).map((_, i) => (
-        <svg key={i} className={`w-4 h-4 ${i < rating ? 'text-[#F59E0B]' : 'text-[#E5E5E5]'}`} fill="currentColor" viewBox="0 0 20 20">
+        <svg key={i} className="w-4 h-4 text-[#FBBF24]" fill="currentColor" viewBox="0 0 20 20">
           <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
         </svg>
       ))}
@@ -18,62 +19,52 @@ function Stars({ rating }: { rating: number }) {
 }
 
 export function ReviewsCarousel() {
-  const scrollRef = useRef<HTMLDivElement>(null)
-
-  const scroll = (dir: 'left' | 'right') => {
-    scrollRef.current?.scrollBy({ left: dir === 'left' ? -360 : 360, behavior: 'smooth' })
-  }
-
   return (
-    <section className="py-16 lg:py-24 bg-[#F8F8F8]">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex flex-col sm:flex-row items-start sm:items-end justify-between gap-6 mb-10">
-          <motion.div initial={{ opacity: 0, y: 16 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}>
-            <SectionHeading
-              label="What People Say"
-              title="205 Five-Star Reviews"
-              subtitle="Real customers. Real results."
-            />
-          </motion.div>
-          <div className="flex gap-2 flex-shrink-0">
-            <button
-              onClick={() => scroll('left')}
-              className="w-11 h-11 bg-white rounded-lg shadow-sm hover:shadow-md border border-[#EEEEEE] hover:border-[#E53E3E] text-[#555555] hover:text-[#E53E3E] flex items-center justify-center transition-all duration-200 cursor-pointer"
-              aria-label="Scroll left"
+    <section className="py-20 lg:py-28 bg-white">
+      <div className="max-w-7xl mx-auto px-6 lg:px-8">
+
+        {/* Header */}
+        <div className="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-6 mb-14">
+          <div>
+            <p className="text-[#E53E3E] text-xs font-bold tracking-[0.25em] uppercase mb-3">What People Say</p>
+            <h2
+              className="text-[#111111] text-4xl sm:text-5xl font-bold uppercase leading-tight"
+              style={{ fontFamily: 'var(--font-heading)' }}
             >
-              <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
-              </svg>
-            </button>
-            <button
-              onClick={() => scroll('right')}
-              className="w-11 h-11 bg-white rounded-lg shadow-sm hover:shadow-md border border-[#EEEEEE] hover:border-[#E53E3E] text-[#555555] hover:text-[#E53E3E] flex items-center justify-center transition-all duration-200 cursor-pointer"
-              aria-label="Scroll right"
-            >
-              <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-              </svg>
-            </button>
+              205 Five-Star
+              <br />
+              Reviews
+            </h2>
+          </div>
+          <div className="flex items-center gap-3">
+            <div className="flex">
+              {[1,2,3,4,5].map((s) => (
+                <svg key={s} className="w-5 h-5 text-[#FBBF24]" fill="currentColor" viewBox="0 0 20 20">
+                  <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/>
+                </svg>
+              ))}
+            </div>
+            <div>
+              <p className="text-[#111111] font-bold text-sm">4.9 / 5.0</p>
+              <p className="text-[#999999] text-xs">Rated Excellent on Google</p>
+            </div>
           </div>
         </div>
 
-        <div
-          ref={scrollRef}
-          className="flex gap-4 overflow-x-auto pb-4 snap-x snap-mandatory"
-          style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
-        >
-          {reviews.map((review, i) => (
+        {/* Reviews grid */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+          {featured.map((review, i) => (
             <motion.div
               key={review.id}
-              initial={{ opacity: 0, x: 20 }}
-              whileInView={{ opacity: 1, x: 0 }}
+              initial={{ opacity: 0, y: 16 }}
+              whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ duration: 0.3, delay: i * 0.04 }}
-              className="flex-shrink-0 w-80 snap-start bg-white rounded-xl shadow-sm hover:shadow-lg transition-all duration-300 p-7 flex flex-col"
+              transition={{ duration: 0.3, delay: i * 0.06 }}
+              className="bg-white border border-[#EEEEEE] rounded-2xl p-7 flex flex-col hover:border-[#E53E3E]/20 hover:shadow-lg transition-all duration-250"
             >
-              <div className="flex items-center justify-between mb-4">
-                <Stars rating={review.rating} />
-                <svg className="w-5 h-5 flex-shrink-0" viewBox="0 0 24 24" fill="currentColor">
+              <div className="flex items-start justify-between mb-4">
+                <Stars />
+                <svg className="w-5 h-5 flex-shrink-0" viewBox="0 0 24 24">
                   <path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/>
                   <path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/>
                   <path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z" fill="#FBBC05"/>
@@ -81,28 +72,31 @@ export function ReviewsCarousel() {
                 </svg>
               </div>
 
-              <p className="text-[#333333] text-sm leading-relaxed flex-1 mb-5">
+              <p className="text-[#444444] text-sm leading-relaxed flex-1 mb-5">
                 &ldquo;{review.text}&rdquo;
               </p>
 
-              <div className="border-t border-[#F0F0F0] pt-4">
-                <p className="text-[#111111] font-bold text-sm">{review.name}</p>
-                {review.service && <p className="text-[#888888] text-xs mt-0.5">{review.service}</p>}
+              <div className="pt-4 border-t border-[#F0F0F0]">
+                <p className="text-[#111111] font-semibold text-sm">{review.name}</p>
+                {review.service && (
+                  <p className="text-[#999999] text-xs mt-0.5">{review.service}</p>
+                )}
               </div>
             </motion.div>
           ))}
         </div>
 
-        <div className="text-center mt-8">
-          <a
+        {/* Footer link */}
+        <div className="text-center mt-10">
+          <Link
             href="/reviews"
-            className="inline-flex items-center gap-1.5 text-[#E53E3E] text-sm font-bold uppercase tracking-wider hover:text-[#C53030] transition-colors cursor-pointer"
+            className="inline-flex items-center gap-2 border border-[#DDDDDD] hover:border-[#E53E3E] hover:text-[#E53E3E] text-[#555555] font-bold text-sm px-8 py-3.5 rounded-lg uppercase tracking-wider transition-all duration-200 cursor-pointer"
           >
-            Read all 205 reviews
+            Read All 205 Reviews
             <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
             </svg>
-          </a>
+          </Link>
         </div>
       </div>
     </section>
