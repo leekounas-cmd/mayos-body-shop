@@ -1,7 +1,4 @@
-'use client'
-
 import Link from 'next/link'
-import { motion } from 'framer-motion'
 
 type CTABannerProps = {
   title?: string
@@ -13,36 +10,28 @@ type CTABannerProps = {
 
 export function CTABanner({
   title = 'Ready to get your car back to perfect?',
-  subtitle = 'Get a free estimate — no pressure, no commitment. Just an honest quote from people who know what they\'re doing.',
+  subtitle = 'Free estimate. No commitment. We work with all insurance.',
   primaryLabel = 'Get Free Estimate',
   primaryHref = '/get-estimate',
   showPhone = true,
 }: CTABannerProps) {
   return (
-    <section className="bg-[#E53E3E] py-20">
+    <section className="bg-[#111111] py-20">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          className="flex flex-col lg:flex-row items-center justify-between gap-8"
-        >
-          <div className="text-center lg:text-left max-w-2xl">
+        <div className="flex flex-col lg:flex-row items-center justify-between gap-8">
+          <div className="text-center lg:text-left">
             <h2
-              className="text-4xl sm:text-5xl font-bold uppercase tracking-wide text-white leading-tight mb-4"
+              className="text-4xl sm:text-5xl font-bold uppercase tracking-wide text-white leading-tight mb-3"
               style={{ fontFamily: 'var(--font-heading)' }}
             >
               {title}
             </h2>
-            <p className="text-white/80 text-lg">
-              {subtitle}
-            </p>
+            <p className="text-white/70 text-lg">{subtitle}</p>
           </div>
-
-          <div className="flex flex-col sm:flex-row lg:flex-col xl:flex-row gap-4 flex-shrink-0">
+          <div className="flex flex-col sm:flex-row gap-3 flex-shrink-0">
             <Link
               href={primaryHref}
-              className="inline-flex items-center justify-center bg-white text-[#E53E3E] hover:bg-[#0A0A0A] hover:text-white font-bold px-8 py-4 uppercase tracking-widest text-sm transition-all duration-200 hover:scale-[1.02]"
+              className="inline-flex items-center justify-center bg-[#E53E3E] hover:bg-[#C53030] text-white font-bold px-8 py-4 uppercase tracking-widest text-sm transition-colors duration-150 cursor-pointer"
               style={{ fontFamily: 'var(--font-heading)' }}
             >
               {primaryLabel}
@@ -50,7 +39,7 @@ export function CTABanner({
             {showPhone && (
               <a
                 href="tel:+12147440766"
-                className="inline-flex items-center justify-center border-2 border-white text-white hover:bg-white hover:text-[#E53E3E] font-bold px-8 py-4 uppercase tracking-widest text-sm transition-all duration-200 gap-2"
+                className="inline-flex items-center justify-center gap-2 border-2 border-white/30 hover:border-white text-white font-bold px-8 py-4 uppercase tracking-widest text-sm transition-colors duration-150 cursor-pointer"
                 style={{ fontFamily: 'var(--font-heading)' }}
               >
                 <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -60,7 +49,7 @@ export function CTABanner({
               </a>
             )}
           </div>
-        </motion.div>
+        </div>
       </div>
     </section>
   )

@@ -1,12 +1,11 @@
 import type { Metadata } from 'next'
 import { reviews } from '@/data/reviews'
-import { SectionHeading } from '@/components/ui/SectionHeading'
 import { CTABanner } from '@/components/sections/CTABanner'
 import { pageMetadata } from '@/lib/metadata'
 
 export const metadata: Metadata = pageMetadata(
   "Customer Reviews",
-  "See what Dallas customers say about Mayo's Body Shop. 118+ five-star Google reviews for collision repair, auto painting, and more.",
+  "See what Dallas customers say about Mayo's Body Shop. 205+ five-star Google reviews for collision repair, auto painting, and more.",
   "/reviews"
 )
 
@@ -14,7 +13,7 @@ function StarRating({ rating }: { rating: number }) {
   return (
     <div className="flex gap-0.5">
       {Array.from({ length: 5 }).map((_, i) => (
-        <svg key={i} className={`w-4 h-4 ${i < rating ? 'text-[#F59E0B]' : 'text-[#2A2A2A]'}`} fill="currentColor" viewBox="0 0 20 20">
+        <svg key={i} className={`w-4 h-4 ${i < rating ? 'text-[#F59E0B]' : 'text-[#E5E5E5]'}`} fill="currentColor" viewBox="0 0 20 20">
           <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
         </svg>
       ))}
@@ -24,50 +23,52 @@ function StarRating({ rating }: { rating: number }) {
 
 export default function ReviewsPage() {
   return (
-    <>
-      {/* Hero */}
-      <section className="pt-32 pb-20 bg-[#111111] border-b border-[#2A2A2A]">
+    <div className="min-h-screen bg-white pt-16">
+      {/* Red hero bar */}
+      <div className="bg-[#E53E3E] py-12">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          {/* Rating summary */}
-          <div className="flex flex-col sm:flex-row items-start sm:items-center gap-6 mb-10">
-            <div className="bg-[#E53E3E] p-6 text-center min-w-[100px]">
-              <p className="text-white text-5xl font-bold" style={{ fontFamily: 'var(--font-heading)' }}>4.9</p>
+          <div className="flex flex-col sm:flex-row items-start sm:items-center gap-6">
+            <div className="bg-white p-5 text-center min-w-[90px]">
+              <p className="text-[#E53E3E] text-4xl font-bold" style={{ fontFamily: 'var(--font-heading)' }}>4.9</p>
               <div className="flex justify-center mt-1">
                 <StarRating rating={5} />
               </div>
-              <p className="text-white/80 text-xs mt-1">out of 5</p>
+              <p className="text-[#555555] text-xs mt-1">out of 5</p>
             </div>
             <div>
-              <SectionHeading
-                label="Google Reviews"
-                title="118+ Five-Star Reviews"
-                subtitle="Dallas has been trusting Mayo's since 1998. These are their words."
-              />
+              <p className="text-white/80 text-xs font-bold tracking-[0.2em] uppercase mb-1">Google Reviews</p>
+              <h1
+                className="text-4xl sm:text-5xl font-bold uppercase leading-tight text-white"
+                style={{ fontFamily: 'var(--font-heading)' }}
+              >
+                205+ Five-Star Reviews
+              </h1>
+              <p className="text-white/80 mt-2">Dallas has been trusting Mayo&apos;s since 1998. These are their words.</p>
             </div>
           </div>
         </div>
-      </section>
+      </div>
 
       {/* Reviews grid */}
-      <section className="py-20 bg-[#0A0A0A]">
+      <section className="py-16 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {reviews.map((review) => (
-              <div key={review.id} className="bg-[#1A1A1A] border border-[#2A2A2A] p-6 flex flex-col">
-                <span className="text-[#E53E3E] text-5xl leading-none font-serif mb-2">&ldquo;</span>
-                <p className="text-white text-sm leading-relaxed flex-1 mb-6">
+              <div key={review.id} className="bg-[#FAFAFA] border border-[#E5E5E5] p-6 flex flex-col">
+                <span className="text-[#E53E3E] text-4xl leading-none font-serif mb-2">&ldquo;</span>
+                <p className="text-[#333333] text-sm leading-relaxed flex-1 mb-6">
                   {review.text}
                 </p>
-                <div className="flex items-center justify-between">
+                <div className="flex items-center justify-between border-t border-[#E5E5E5] pt-4">
                   <div>
-                    <p className="text-white font-semibold text-sm">{review.name}</p>
+                    <p className="text-[#111111] font-semibold text-sm">{review.name}</p>
                     {review.service && (
-                      <p className="text-[#A0A0A0] text-xs mt-0.5">{review.service}</p>
+                      <p className="text-[#777777] text-xs mt-0.5">{review.service}</p>
                     )}
                   </div>
                   <div className="text-right">
                     <StarRating rating={review.rating} />
-                    <p className="text-[#A0A0A0] text-xs mt-1">Google Review</p>
+                    <p className="text-[#777777] text-xs mt-1">Google Review</p>
                   </div>
                 </div>
               </div>
@@ -76,12 +77,12 @@ export default function ReviewsPage() {
 
           {/* Google link */}
           <div className="text-center mt-16">
-            <p className="text-[#A0A0A0] mb-4">See all reviews on Google</p>
+            <p className="text-[#555555] mb-4">See all reviews on Google</p>
             <a
               href="https://www.google.com/maps/search/Mayo's+Body+Shop+Dallas+TX"
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 border border-[#2A2A2A] hover:border-white text-white text-sm px-6 py-3 uppercase tracking-wider transition-colors"
+              className="inline-flex items-center gap-2 border border-[#E5E5E5] hover:border-[#E53E3E] text-[#111111] hover:text-[#E53E3E] text-sm px-6 py-3 uppercase tracking-wider transition-colors cursor-pointer"
             >
               <svg className="w-4 h-4" viewBox="0 0 24 24" fill="currentColor">
                 <path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/>
@@ -95,7 +96,7 @@ export default function ReviewsPage() {
         </div>
       </section>
 
-      <CTABanner title="Join 118+ Satisfied Customers" subtitle="Get your free estimate today and see why Dallas trusts Mayo's." />
-    </>
+      <CTABanner title="Join 205+ Satisfied Customers" subtitle="Get your free estimate today and see why Dallas trusts Mayo's." />
+    </div>
   )
 }

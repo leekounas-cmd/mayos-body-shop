@@ -43,7 +43,7 @@ export default async function ServicePage({ params }: PageProps) {
   const faqSchema = faqPageSchema(service.faq)
 
   return (
-    <>
+    <div className="min-h-screen bg-white pt-16">
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(svcSchema) }}
@@ -53,34 +53,37 @@ export default async function ServicePage({ params }: PageProps) {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
       />
 
-      {/* Hero */}
-      <section className="pt-32 pb-20 bg-[#111111] border-b border-[#2A2A2A]">
+      {/* Red hero bar */}
+      <div className="bg-[#E53E3E] py-12">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <Link
             href="/services"
-            className="text-[#A0A0A0] hover:text-white text-sm uppercase tracking-wider flex items-center gap-1 mb-8 transition-colors"
+            className="text-white/70 hover:text-white text-xs uppercase tracking-wider flex items-center gap-1 mb-6 transition-colors"
           >
-            <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <svg className="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
             </svg>
             All Services
           </Link>
-          <SectionHeading
-            label="Dallas Auto Body"
-            title={service.heroHeadline}
-            subtitle={service.heroSub}
-          />
-          <div className="mt-8 flex flex-col sm:flex-row gap-4">
+          <p className="text-white/80 text-xs font-bold tracking-[0.2em] uppercase mb-2">Dallas Auto Body</p>
+          <h1
+            className="text-4xl sm:text-5xl font-bold uppercase leading-tight text-white"
+            style={{ fontFamily: 'var(--font-heading)' }}
+          >
+            {service.heroHeadline}
+          </h1>
+          <p className="text-white/80 mt-3 text-lg max-w-2xl">{service.heroSub}</p>
+          <div className="mt-6 flex flex-col sm:flex-row gap-3">
             <Link
               href="/get-estimate"
-              className="inline-flex items-center justify-center bg-[#E53E3E] hover:bg-[#C53030] text-white font-bold px-8 py-4 uppercase tracking-widest text-sm transition-all duration-200 hover:scale-[1.02]"
+              className="inline-flex items-center justify-center bg-white hover:bg-[#F5F5F5] text-[#E53E3E] font-bold px-8 py-3 uppercase tracking-widest text-sm transition-colors cursor-pointer"
               style={{ fontFamily: 'var(--font-heading)' }}
             >
               Get Free Estimate
             </Link>
             <a
               href="tel:+12147440766"
-              className="inline-flex items-center justify-center border border-white/30 hover:border-white text-white px-8 py-4 uppercase tracking-wider text-sm transition-all hover:bg-white/5 gap-2"
+              className="inline-flex items-center justify-center border border-white/40 hover:border-white text-white px-8 py-3 uppercase tracking-wider text-sm transition-colors gap-2 cursor-pointer"
             >
               <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
@@ -89,15 +92,15 @@ export default async function ServicePage({ params }: PageProps) {
             </a>
           </div>
         </div>
-      </section>
+      </div>
 
       {/* Description */}
-      <section className="py-20 bg-[#0A0A0A]">
+      <section className="py-16 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-start">
             <div className="space-y-5">
               {service.longDescription.map((para, i) => (
-                <p key={i} className="text-[#A0A0A0] leading-relaxed text-lg">
+                <p key={i} className="text-[#555555] leading-relaxed text-lg">
                   {para}
                 </p>
               ))}
@@ -113,7 +116,7 @@ export default async function ServicePage({ params }: PageProps) {
                 aspectRatio="aspect-[4/3]"
                 isPlaceholder={slug !== 'collision-repair'}
               />
-              <p className="text-[#A0A0A0] text-xs text-center uppercase tracking-wider">
+              <p className="text-[#AAAAAA] text-xs text-center uppercase tracking-wider">
                 Drag to compare — {service.title} results
               </p>
             </div>
@@ -122,7 +125,7 @@ export default async function ServicePage({ params }: PageProps) {
       </section>
 
       {/* Process */}
-      <section className="py-20 bg-[#111111] border-y border-[#2A2A2A]">
+      <section className="py-16 bg-[#F5F5F5] border-y border-[#E5E5E5]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <SectionHeading label="How It Works" title="Our Process" />
 
@@ -135,15 +138,15 @@ export default async function ServicePage({ params }: PageProps) {
                       {step.step}
                     </span>
                   </div>
-                  <div className="h-px bg-[#2A2A2A] flex-1" />
+                  <div className="h-px bg-[#E5E5E5] flex-1" />
                 </div>
                 <h3
-                  className="text-white font-bold uppercase tracking-wide mb-2"
+                  className="text-[#111111] font-bold uppercase tracking-wide mb-2"
                   style={{ fontFamily: 'var(--font-heading)' }}
                 >
                   {step.title}
                 </h3>
-                <p className="text-[#A0A0A0] text-sm leading-relaxed">
+                <p className="text-[#555555] text-sm leading-relaxed">
                   {step.description}
                 </p>
               </div>
@@ -153,7 +156,7 @@ export default async function ServicePage({ params }: PageProps) {
       </section>
 
       {/* FAQ */}
-      <section className="py-20 bg-[#0A0A0A]">
+      <section className="py-16 bg-white">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           <SectionHeading
             label="Questions"
@@ -170,6 +173,6 @@ export default async function ServicePage({ params }: PageProps) {
         title={`Ready for ${service.shortTitle} in Dallas?`}
         subtitle="Get your free estimate today. We work with all insurance and have been restoring Dallas vehicles since 1998."
       />
-    </>
+    </div>
   )
 }

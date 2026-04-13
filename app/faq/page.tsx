@@ -1,6 +1,5 @@
 import type { Metadata } from 'next'
 import { faqs } from '@/data/faq'
-import { SectionHeading } from '@/components/ui/SectionHeading'
 import { FAQAccordion } from '@/components/ui/FAQAccordion'
 import { CTABanner } from '@/components/sections/CTABanner'
 import { pageMetadata } from '@/lib/metadata'
@@ -16,26 +15,30 @@ export default function FAQPage() {
   const schema = faqPageSchema(faqs)
 
   return (
-    <>
+    <div className="min-h-screen bg-white pt-16">
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
       />
 
-      {/* Hero */}
-      <section className="pt-32 pb-20 bg-[#111111] border-b border-[#2A2A2A]">
+      {/* Red hero bar */}
+      <div className="bg-[#E53E3E] py-12">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-          <SectionHeading
-            label="Common Questions"
-            title="FAQ"
-            subtitle="Answers to the most common questions we get about auto body repair, insurance, and working with Mayo's."
-          />
+          <p className="text-white/80 text-xs font-bold tracking-[0.2em] uppercase mb-2">Common Questions</p>
+          <h1
+            className="text-5xl sm:text-6xl font-bold uppercase leading-tight text-white"
+            style={{ fontFamily: 'var(--font-heading)' }}
+          >
+            FAQ
+          </h1>
+          <p className="text-white/80 mt-3 text-lg max-w-xl">
+            Answers to the most common questions we get about auto body repair, insurance, and working with Mayo&apos;s.
+          </p>
         </div>
-      </section>
+      </div>
 
-      <section className="py-20 bg-[#0A0A0A]">
+      <section className="py-16 bg-white">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-          {/* Category groups */}
           {['Insurance', 'Repairs', 'General'].map((category) => {
             const items = faqs.filter((f) => f.category === category)
             if (!items.length) return null
@@ -45,7 +48,7 @@ export default function FAQPage() {
                   className="text-[#E53E3E] text-xs font-semibold tracking-[0.2em] uppercase mb-6 flex items-center gap-3"
                 >
                   {category}
-                  <span className="flex-1 h-px bg-[#2A2A2A]" />
+                  <span className="flex-1 h-px bg-[#E5E5E5]" />
                 </h2>
                 <FAQAccordion items={items} />
               </div>
@@ -53,24 +56,24 @@ export default function FAQPage() {
           })}
 
           {/* Still have questions */}
-          <div className="mt-16 bg-[#1A1A1A] border border-[#2A2A2A] p-8 text-center">
-            <h3 className="text-white font-bold text-xl uppercase mb-3" style={{ fontFamily: 'var(--font-heading)' }}>
+          <div className="mt-16 bg-[#F5F5F5] border border-[#E5E5E5] p-8 text-center">
+            <h3 className="text-[#111111] font-bold text-xl uppercase mb-3" style={{ fontFamily: 'var(--font-heading)' }}>
               Still Have Questions?
             </h3>
-            <p className="text-[#A0A0A0] mb-6">
+            <p className="text-[#555555] mb-6">
               Call us directly or stop by. We&apos;re happy to talk through anything before you commit to anything.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <a
                 href="tel:+12147440766"
-                className="inline-flex items-center justify-center bg-[#E53E3E] hover:bg-[#C53030] text-white font-bold px-8 py-3 uppercase tracking-wider text-sm transition-colors"
+                className="inline-flex items-center justify-center bg-[#E53E3E] hover:bg-[#C53030] text-white font-bold px-8 py-3 uppercase tracking-wider text-sm transition-colors cursor-pointer"
                 style={{ fontFamily: 'var(--font-heading)' }}
               >
                 Call (214) 744-0766
               </a>
               <a
                 href="/contact"
-                className="inline-flex items-center justify-center border border-[#2A2A2A] hover:border-white text-white px-8 py-3 uppercase tracking-wider text-sm transition-colors"
+                className="inline-flex items-center justify-center border border-[#E5E5E5] hover:border-[#E53E3E] text-[#111111] hover:text-[#E53E3E] px-8 py-3 uppercase tracking-wider text-sm transition-colors cursor-pointer"
               >
                 Send a Message
               </a>
@@ -80,6 +83,6 @@ export default function FAQPage() {
       </section>
 
       <CTABanner />
-    </>
+    </div>
   )
 }

@@ -31,7 +31,7 @@ export const localBusinessSchema = {
   aggregateRating: {
     '@type': 'AggregateRating',
     ratingValue: '4.9',
-    reviewCount: '118',
+    reviewCount: '205',
   },
   foundingDate: '1998',
   areaServed: {

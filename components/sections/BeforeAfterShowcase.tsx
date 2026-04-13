@@ -8,24 +8,24 @@ const showcaseItems = [
   {
     beforeSrc: '/images/gallery/honda-civic-collision-before.png',
     afterSrc: '/images/gallery/honda-civic-collision-after.png',
-    beforeAlt: 'Blue Honda Civic — front fender and bumper collision damage',
-    afterAlt: 'Blue Honda Civic — fully restored at Mayo\'s Body Shop Dallas',
+    beforeAlt: 'Blue Honda Civic — front fender and bumper collision damage, Dallas TX',
+    afterAlt: 'Blue Honda Civic — fully restored at Mayo\'s Body Shop, Dallas TX',
     label: 'Collision Repair',
     isPlaceholder: false,
   },
   {
     beforeSrc: '',
     afterSrc: '',
-    beforeAlt: 'Dent and scratch damage',
-    afterAlt: 'Dent repaired — smooth panel finish',
+    beforeAlt: 'Door dent damage',
+    afterAlt: 'Dent repaired — smooth panel',
     label: 'Dent Repair',
     isPlaceholder: true,
   },
   {
     beforeSrc: '',
     afterSrc: '',
-    beforeAlt: 'Faded paint damage',
-    afterAlt: 'Full repaint — color matched to factory',
+    beforeAlt: 'Paint damage before',
+    afterAlt: 'Full repaint after',
     label: 'Full Repaint',
     isPlaceholder: true,
   },
@@ -33,7 +33,7 @@ const showcaseItems = [
 
 export function BeforeAfterShowcase() {
   return (
-    <section className="py-24 bg-[#111111]">
+    <section className="py-24 bg-[#F5F5F5]">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -44,7 +44,7 @@ export function BeforeAfterShowcase() {
           <SectionHeading
             label="The Results"
             title="See The Difference"
-            subtitle="Drag the slider to see what we can do. Real work from our shop — no filters, no tricks."
+            subtitle="Drag the slider. Real work from our shop — no filters, no tricks."
             center
           />
         </motion.div>
@@ -56,23 +56,24 @@ export function BeforeAfterShowcase() {
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ duration: 0.4, delay: i * 0.1 }}
+              transition={{ duration: 0.35, delay: i * 0.1 }}
               className="space-y-3"
             >
-              <BeforeAfterSlider
-                beforeSrc={item.beforeSrc}
-                afterSrc={item.afterSrc}
-                beforeAlt={item.beforeAlt}
-                afterAlt={item.afterAlt}
-                aspectRatio="aspect-[4/3]"
-                isPlaceholder={item.isPlaceholder}
-              />
-              <p className="text-[#A0A0A0] text-sm text-center uppercase tracking-wider">{item.label}</p>
+              <div className="overflow-hidden shadow-sm">
+                <BeforeAfterSlider
+                  beforeSrc={item.beforeSrc}
+                  afterSrc={item.afterSrc}
+                  beforeAlt={item.beforeAlt}
+                  afterAlt={item.afterAlt}
+                  aspectRatio="aspect-[4/3]"
+                  isPlaceholder={item.isPlaceholder}
+                />
+              </div>
+              <p className="text-[#555555] text-xs text-center uppercase tracking-widest font-semibold">{item.label}</p>
             </motion.div>
           ))}
         </div>
 
-        {/* CTA */}
         <motion.div
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
@@ -80,10 +81,9 @@ export function BeforeAfterShowcase() {
           transition={{ delay: 0.4 }}
           className="text-center mt-12"
         >
-          <p className="text-[#A0A0A0] mb-4">Want to see more work?</p>
           <a
             href="/gallery"
-            className="inline-flex items-center gap-2 text-[#E53E3E] font-semibold uppercase tracking-wider text-sm hover:text-white transition-colors"
+            className="inline-flex items-center gap-2 text-[#E53E3E] font-bold text-sm uppercase tracking-wider hover:text-[#C53030] transition-colors cursor-pointer"
           >
             View Full Gallery
             <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
