@@ -40,10 +40,10 @@ const serviceIcons: Record<string, React.ReactNode> = {
 
 export function ServicesGrid() {
   return (
-    <section className="py-24 bg-white">
+    <section className="py-16 lg:py-24 bg-[#F8F8F8]">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 
-        <div className="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-6 mb-14">
+        <div className="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-6 mb-12">
           <SectionHeading
             label="What We Do"
             title="Our Services"
@@ -51,7 +51,7 @@ export function ServicesGrid() {
           />
           <Link
             href="/services"
-            className="inline-flex items-center gap-1.5 text-[#E53E3E] text-sm font-bold uppercase tracking-wider hover:text-[#C53030] transition-colors cursor-pointer flex-shrink-0"
+            className="inline-flex items-center gap-2 text-[#E53E3E] text-sm font-bold uppercase tracking-wider hover:text-[#C53030] transition-colors cursor-pointer flex-shrink-0"
           >
             View All Services
             <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -60,26 +60,24 @@ export function ServicesGrid() {
           </Link>
         </div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-px bg-[#E5E5E5]">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
           {services.map((service, i) => (
             <motion.div
               key={service.slug}
-              initial={{ opacity: 0, y: 16 }}
+              initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.3, delay: i * 0.06 }}
-              className="bg-white"
             >
               <Link
                 href={`/services/${service.slug}`}
-                className="group block bg-white p-8 h-full transition-colors duration-200 cursor-pointer hover:bg-[#FAFAFA]"
+                className="group block bg-white rounded-xl shadow-sm hover:shadow-xl transition-all duration-300 p-8 h-full cursor-pointer"
               >
-                <div className="w-10 h-10 bg-[#F5F5F5] group-hover:bg-[#E53E3E] flex items-center justify-center mb-6 text-[#E53E3E] group-hover:text-white transition-colors duration-200 flex-shrink-0">
+                <div className="w-12 h-12 bg-[#FEF2F2] rounded-lg flex items-center justify-center mb-5 text-[#E53E3E] group-hover:bg-[#E53E3E] group-hover:text-white transition-all duration-300 flex-shrink-0">
                   {serviceIcons[service.slug]}
                 </div>
-
                 <h3
-                  className="text-[#111111] text-xl font-bold uppercase tracking-wide mb-3 group-hover:text-[#E53E3E] transition-colors"
+                  className="text-[#111111] text-xl font-bold uppercase tracking-wide mb-3 group-hover:text-[#E53E3E] transition-colors duration-200"
                   style={{ fontFamily: 'var(--font-heading)' }}
                 >
                   {service.shortTitle}
@@ -87,7 +85,7 @@ export function ServicesGrid() {
                 <p className="text-[#666666] text-sm leading-relaxed mb-6">
                   {service.description}
                 </p>
-                <span className="inline-flex items-center gap-1.5 text-[#E53E3E] text-xs font-bold uppercase tracking-wider group-hover:gap-2.5 transition-all">
+                <span className="inline-flex items-center gap-1.5 text-[#E53E3E] text-xs font-bold uppercase tracking-wider group-hover:gap-3 transition-all duration-200">
                   Learn More
                   <svg className="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M9 5l7 7-7 7" />
