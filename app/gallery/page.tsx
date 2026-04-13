@@ -3,6 +3,7 @@
 import { useState } from 'react'
 import Image from 'next/image'
 import { motion } from 'framer-motion'
+import { PageHero } from '@/components/ui/PageHero'
 import { BeforeAfterSlider } from '@/components/ui/BeforeAfterSlider'
 import { CTABanner } from '@/components/sections/CTABanner'
 
@@ -63,33 +64,25 @@ export default function GalleryPage() {
       : galleryItems.filter((item) => item.service === activeFilter)
 
   return (
-    <div className="min-h-screen bg-white pt-16">
-      {/* Red hero bar */}
-      <div className="bg-[#E53E3E] py-12">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <p className="text-white/80 text-xs font-bold tracking-[0.2em] uppercase mb-2">Our Work</p>
-          <h1
-            className="text-5xl sm:text-6xl font-bold uppercase leading-tight text-white"
-            style={{ fontFamily: 'var(--font-heading)' }}
-          >
-            Before &amp; After Gallery
-          </h1>
-          <p className="text-white/80 mt-3 text-lg">Real repairs, real results. Drag any slider to see the transformation.</p>
-        </div>
-      </div>
+    <div className="min-h-screen bg-white">
+      <PageHero
+        eyebrow="Our Work"
+        title={<>Before &amp;<br />After Gallery</>}
+        subtitle="Real repairs, real results. Drag any slider to see the transformation."
+      />
 
       {/* Filter bar */}
-      <div className="bg-white border-b border-[#E5E5E5] py-5">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="bg-white border-b border-[#EEEEEE] sticky top-[65px] z-30">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
           <div className="flex flex-wrap gap-2">
             {filters.map((filter) => (
               <button
                 key={filter}
                 onClick={() => setActiveFilter(filter)}
-                className={`px-4 py-2 text-xs uppercase tracking-wider font-semibold transition-colors border cursor-pointer ${
+                className={`px-4 py-2 text-xs uppercase tracking-wider font-bold transition-all cursor-pointer ${
                   activeFilter === filter
-                    ? 'bg-[#E53E3E] border-[#E53E3E] text-white'
-                    : 'border-[#E5E5E5] text-[#555555] hover:border-[#E53E3E] hover:text-[#E53E3E]'
+                    ? 'bg-[#E53E3E] text-white'
+                    : 'bg-[#F5F5F5] text-[#555555] hover:bg-[#EEEEEE]'
                 }`}
               >
                 {filter}
@@ -100,41 +93,48 @@ export default function GalleryPage() {
       </div>
 
       {/* Grid */}
-      <section className="py-12 bg-white">
+      <section className="py-14 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
             {filtered.map((item, i) => (
               <motion.div
                 key={item.id}
-                initial={{ opacity: 0, y: 20 }}
+                initial={{ opacity: 0, y: 16 }}
                 animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.3, delay: i * 0.05 }}
-                className="space-y-2"
+                transition={{ duration: 0.25, delay: i * 0.04 }}
               >
                 {item.collage ? (
-                  <div className="relative aspect-[4/3] overflow-hidden bg-[#F5F5F5] border border-[#E5E5E5]">
-                    <Image
-                      src={item.collage}
-                      alt={item.collageAlt ?? ''}
-                      fill
-                      className="object-cover"
-                      sizes="(max-width: 768px) 100vw, 33vw"
-                    />
+                  <div>
+                    <div className="relative aspect-[4/3] overflow-hidden bg-[#F5F5F5]">
+                      <Image
+                        src={item.collage}
+                        alt={item.collageAlt ?? ''}
+                        fill
+                        className="object-cover"
+                        sizes="(max-width: 768px) 100vw, 33vw"
+                      />
+                    </div>
+                    <div className="flex items-center justify-between mt-2 px-0.5">
+                      <span className="text-[#444444] text-xs uppercase tracking-wider font-bold">{item.service}</span>
+                      <span className="text-[#E53E3E] text-xs">Mayo&apos;s Body Shop</span>
+                    </div>
                   </div>
                 ) : (
-                  <BeforeAfterSlider
-                    beforeSrc={item.beforeSrc ?? ''}
-                    afterSrc={item.afterSrc ?? ''}
-                    beforeAlt={item.beforeAlt}
-                    afterAlt={item.afterAlt}
-                    aspectRatio="aspect-[4/3]"
-                    isPlaceholder={item.isPlaceholder ?? true}
-                  />
+                  <div>
+                    <BeforeAfterSlider
+                      beforeSrc={item.beforeSrc ?? ''}
+                      afterSrc={item.afterSrc ?? ''}
+                      beforeAlt={item.beforeAlt}
+                      afterAlt={item.afterAlt}
+                      aspectRatio="aspect-[4/3]"
+                      isPlaceholder={item.isPlaceholder ?? true}
+                    />
+                    <div className="flex items-center justify-between mt-2 px-0.5">
+                      <span className="text-[#444444] text-xs uppercase tracking-wider font-bold">{item.service}</span>
+                      <span className="text-[#E53E3E] text-xs">Mayo&apos;s Body Shop</span>
+                    </div>
+                  </div>
                 )}
-                <div className="flex items-center justify-between px-1">
-                  <span className="text-[#555555] text-xs uppercase tracking-wider font-semibold">{item.service}</span>
-                  <span className="text-[#E53E3E] text-xs">Mayo&apos;s Body Shop Dallas</span>
-                </div>
               </motion.div>
             ))}
           </div>
@@ -147,10 +147,10 @@ export default function GalleryPage() {
         </div>
       </section>
 
-      {/* Instagram note */}
-      <div className="bg-[#F5F5F5] border-y border-[#E5E5E5] py-10">
+      {/* Instagram */}
+      <div className="bg-[#F5F5F5] border-y border-[#EEEEEE] py-12">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <p className="text-[#555555] mb-4">See more of our work on Instagram</p>
+          <p className="text-[#666666] mb-4 text-sm">See more of our work on Instagram</p>
           <a
             href="https://www.instagram.com/mayos.bodyshop"
             target="_blank"
