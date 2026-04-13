@@ -1,0 +1,67 @@
+'use client'
+
+import Link from 'next/link'
+import { motion } from 'framer-motion'
+
+type CTABannerProps = {
+  title?: string
+  subtitle?: string
+  primaryLabel?: string
+  primaryHref?: string
+  showPhone?: boolean
+}
+
+export function CTABanner({
+  title = 'Ready to get your car back to perfect?',
+  subtitle = 'Get a free estimate — no pressure, no commitment. Just an honest quote from people who know what they\'re doing.',
+  primaryLabel = 'Get Free Estimate',
+  primaryHref = '/get-estimate',
+  showPhone = true,
+}: CTABannerProps) {
+  return (
+    <section className="bg-[#E53E3E] py-20">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          className="flex flex-col lg:flex-row items-center justify-between gap-8"
+        >
+          <div className="text-center lg:text-left max-w-2xl">
+            <h2
+              className="text-4xl sm:text-5xl font-bold uppercase tracking-wide text-white leading-tight mb-4"
+              style={{ fontFamily: 'var(--font-heading)' }}
+            >
+              {title}
+            </h2>
+            <p className="text-white/80 text-lg">
+              {subtitle}
+            </p>
+          </div>
+
+          <div className="flex flex-col sm:flex-row lg:flex-col xl:flex-row gap-4 flex-shrink-0">
+            <Link
+              href={primaryHref}
+              className="inline-flex items-center justify-center bg-white text-[#E53E3E] hover:bg-[#0A0A0A] hover:text-white font-bold px-8 py-4 uppercase tracking-widest text-sm transition-all duration-200 hover:scale-[1.02]"
+              style={{ fontFamily: 'var(--font-heading)' }}
+            >
+              {primaryLabel}
+            </Link>
+            {showPhone && (
+              <a
+                href="tel:+12147440766"
+                className="inline-flex items-center justify-center border-2 border-white text-white hover:bg-white hover:text-[#E53E3E] font-bold px-8 py-4 uppercase tracking-widest text-sm transition-all duration-200 gap-2"
+                style={{ fontFamily: 'var(--font-heading)' }}
+              >
+                <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
+                </svg>
+                (214) 744-0766
+              </a>
+            )}
+          </div>
+        </motion.div>
+      </div>
+    </section>
+  )
+}
